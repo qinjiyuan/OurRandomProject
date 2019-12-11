@@ -56,7 +56,6 @@
 				jsonObj.fill = getRandomColor();
 				entries.push(jsonObj);
 			}
-			
 			var settings = {
                 entries: entries,
                 width: winWidth-100,
@@ -77,14 +76,9 @@
                 fontStyle: 'normal',//italic 
                 fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
                 fontToUpperCase: true
-
             };
 				$( '#tag-cloud' ).svg3DTagCloud( settings );
-			
-
-			
 		}
-		
 		
 	//生成随机的名字
 	function getRandomName(){
@@ -93,8 +87,6 @@
 		var randomName = json802[randomNum].name;
 		$("#randomnames").val(randomName);
 	}
-	
-	
 	//开始显示随机名称呼
 	function startRollCall(){
 		if(typeof(rollCallTask) != 'undefined'){
@@ -106,8 +98,7 @@
 					$('#'+ids).attr("fill",'#aabbcc');
 					$('#'+ids).attr("font-size","24");
 				}
-				
-				ids = randomNum + 'myids';			
+				ids = randomNum + 'myids';
 				$('#'+ids).attr("fill","red");
 				$('#'+ids).attr("font-size","48");
 				
@@ -146,31 +137,18 @@ function getRandomColor(){
 		var c4 = Math.ceil(Math.random()*16).toString(16);
 		var c5 = Math.ceil(Math.random()*16).toString(16);
 		var c6 = Math.ceil(Math.random()*16).toString(16);
-	
 		var cololr = "#"+c1+c2+c3+c4+c5+c6;
 		return cololr;
-
 }
-
-	
-	
 </script>
-
-
 <style>
 	.gb-grey{
-		
 		border-collapse: collapse;
 		border-spacing: 0;
-		
 	}
-	
 </style>
-
 </head>
 <body>
-
-    
 <div class="wrap" style="height:70%;">
   <div class="logo" style="background-color:#1a1a1a;border-radius:5px;margin-right:40px;margin-left:20px;line-height:102px;"><img src="icon/dianming.png" style="padding-left:20px;padding-top:10px;padding-bottom:15px;padding-right:40px;"/><font style="font-size:48px;">802班点名</font></div>
   <div class="main">
@@ -186,12 +164,7 @@ function getRandomColor(){
 	  <a onclick = "clean();"><img src="./icon/clean.png" />清除</a>
     </div>
 	<div id='tag-cloud' style ="overflow:hidden;border-radius:5px;"></div>
-   
   </div>
 </div>
 </body>
-
-
-
-
 </html>
