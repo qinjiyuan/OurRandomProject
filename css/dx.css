@@ -1,0 +1,179 @@
+*{
+	margin:0;
+	padding:0;
+	}
+html{
+	height:100%;
+	width:100%;
+	overflow:auto;
+	}
+body{
+	width:100%;
+	color:#333333;
+	font-family:"Microsoft YaHei","宋体";
+	font-size:14px;
+	background-color:#f8f8f8;
+	overflow:auto;
+	}
+input,select,textarea{
+	font-family:"Microsoft YaHei","宋体";
+	font-size:14px;
+	-webkit-user-select:auto;
+	outline:none;
+	}
+li{
+	list-style:none;
+	float:none;
+	}
+a{
+	text-decoration:none;
+	cursor:pointer;
+	}
+img{
+	border:0;
+	}
+table{
+	width:100%;
+	table-layout:fixed;
+	border-collapse:collapse;
+	}
+.clearfix:after{
+	content:"";
+	display:block;
+	height:0;
+	clear:both;
+	}
+::-webkit-input-placeholder{
+	color: #999;
+    }
+:-moz-placeholder{
+	color: #999;
+	}
+::-moz-placeholder{
+	color: #999;
+	}
+:-ms-input-placeholder{
+	color: #999;
+	}
+.wrap{
+	padding:20px;
+	}
+
+
+.form-box{
+	overflow:hidden;
+	margin-bottom:20px;
+	}
+.form-box input[type=text]{
+	border:1px solid #dddddd;
+	height:31px;
+	float:left;
+	width:400px;
+	padding:0px 5px;
+	font-size:13px;
+	}
+.form-box a.blue-btn{
+	margin-left:10px;
+	display:block;
+	line-height:30px;
+	float:left;
+	background-image:url(../images/blue-btn1.png);
+	height:33px;
+	width:80px;
+	text-align:center;
+	line-height:33px;
+	color:#ffffff;
+	}
+.form-box select{
+	padding:6px 5px 6px 5px;
+	min-width:100px;
+	margin-right:10px;
+	float:left;
+	font-size:13px;
+	border:1px solid #dddddd;
+	}
+.box{
+	border:1px solid #dddddd;
+	background-color:#FFF;
+	float:left;
+	margin-left:20px;
+	}
+.box-head{
+	background-color:#f8f8f8;
+	border-bottom:1px solid #dddddd;
+	height:34px;
+	line-height:34px;
+	padding:0px 8px;
+	font-size:13px;
+	}
+.box-head a{
+	display:block;
+	background-image:url(../images/blue-btn02.png);
+	width:36px;
+	height:20px;
+	line-height:18px;
+	text-align:center;
+	color:#ffffff;
+	margin-top:7px;
+	font-size:12px;
+	float:right;
+	}
+.box-head a.red-btn{
+	background-image:url(../images/red-btn02.png);
+	}
+.box-main{
+	height:370px;
+	overflow:hidden;
+	overflow-y:auto;
+	}
+
+
+.checkbox-wrap{
+	cursor:pointer;
+	overflow:hidden;
+	float:left;
+	padding:10px 0px 0px 8px;
+	}
+.checkbox-wrap span{
+	overflow:hidden;
+	display:block;
+	float:left;
+	background-image:url(../images/check.png);
+	height:16px;
+	width:16px;
+	}
+.checkbox-wrap.active span{
+	background-image:url(../images/check-active.png);
+	}
+.checkbox-wrap span input[type=checkbox]{
+	cursor:pointer;
+	width:16px;
+	height:16px;
+	opacity:0;
+	}
+.checkbox-wrap label{
+	float:left;
+	line-height:16px;
+	font-size:13px;
+	padding-left:5px;
+	cursor:pointer;
+	}
+.dxry-ul li{
+	display:block;
+	float:none;
+	overflow:hidden;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="./icon/random.png" type="image/x-icon"/>
+<title>802班点名</title>
+<link rel="stylesheet" type="text/css" href="./css/index.css" />
+<link rel="stylesheet" type="text/css" href="./css/manage.css" />
+<link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+<!--<link rel="stylesheet" type="text/css" href="./css/ui3g-demo.css"> -->
+
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/jquery.svg3dtagcloud.min.js"></script>
+<script type="text/javascript">
+	
+	//全局的参数
+	var json802 = [{"name":"朱文建","sortNum":1},{"name":"黄馨儀","sortNum":2},{"name":"马玉婷","sortNum":3},{"name":"杨博傲","sortNum":4},{"name":"葛显扬","sortNum":5},{"name":"张雨洁","sortNum":6},{"name":"丁立志","sortNum":7},{"name":"陈怡名","sortNum":8},{"name":"刘悦涵","sortNum":9},{"name":"龚琦杰","sortNum":10},{"name":"郑缘杰","sortNum":11},{"name":"李欣荣","sortNum":12},{"name":"尚林玉","sortNum":13},{"name":"全攀龙","sortNum":14},{"name":"覃熙喻","sortNum":15},{"name":"杨黎","sortNum":16},{"name":"孔唐繁杰","sortNum":17},{"name":"贺睿杰","sortNum":18},{"name":"谢诗缘","sortNum":19},{"name":"孔姝力","sortNum":20},{"name":"杜心蕊","sortNum":21},{"name":"唐帆","sortNum":22},{"name":"唐欣妍","sortNum":23},{"name":"陈文俊","sortNum":24},{"name":"洪煜翔","sortNum":25},{"name":"覃孟圆","sortNum":26},{"name":"陈珍妮","sortNum":27},{"name":"何鑫行","sortNum":28},{"name":"徐语瞳","sortNum":29},{"name":"张垚林","sortNum":30},{"name":"黄代鑫","sortNum":31},{"name":"高馨","sortNum":32},{"name":"杨冰钰","sortNum":33},{"name":"马欣怡","sortNum":34},{"name":"杨紫涵","sortNum":35},{"name":"刘柯验","sortNum":36},{"name":"聂嫚慧","sortNum":37},{"name":"钱思羽","sortNum":38},{"name":"卢佳川","sortNum":39},{"name":"唐宇婷","sortNum":40},{"name":"向泽林","sortNum":41},{"name":"刘星妤","sortNum":42},{"name":"杨均浩","sortNum":43},{"name":"欧洋林","sortNum":44},{"name":"杨静雨","sortNum":45},{"name":"李言萍","sortNum":46},{"name":"黄一鸣","sortNum":47},{"name":"秦立耀","sortNum":48},{"name":"曾悦悦","sortNum":49},{"name":"杨森涵","sortNum":50},{"name":"杨秋悦","sortNum":51},{"name":"丁国栋","sortNum":52},{"name":"范博文","sortNum":53},{"name":"陈灏天","sortNum":54},{"name":"冉俊豪","sortNum":55},{"name":"杨皓添","sortNum":56},{"name":"华旎羽","sortNum":57}];
+
+	
+	var totalNum = 0;
+	var winHeight = 400;
+	var winWidth = 400;
+	
+	entries = [];
+	
+	//需要初始化的方法
+	$(document).ready(function(){
+			initData();
+	});
+	
+
+	$(function(){
+		$(".tab-bar a").click(function(){
+			var thisIndex=$(this).index();
+			var lineLeft=thisIndex*100;
+			$(".tab-bar a").removeClass("active");
+			$(this).addClass("active");
+			$(".bottom-line").animate({left:lineLeft+"px"},300);
+		});
+	})
+	
+	
+  //初始化数据
+	function initData(){
+			winHeight = window.innerHeight;
+		    winWidth = window.innerWidth;
+			
+			for(var indexs in json802){
+				totalNum = totalNum + 1;
+				var jsonObj = {};	
+				jsonObj.label = json802[indexs].name;
+				jsonObj.url = '#';
+				jsonObj.ids = indexs + 'myids';
+				jsonObj.target = '_top';
+				jsonObj.myids = "'"+indexs+"'";
+				jsonObj.fill = getRandomColor();
+				entries.push(jsonObj);
+			}
+			
+			var settings = {
+                entries: entries,
+                width: winWidth-100,
+                height: winHeight/1.4,
+                radius: '100%',
+                radiusMin: 75,
+                bgDraw: true,
+                bgColor: '#494A5F',
+                opacityOver: 1.00,
+                opacityOut: 0.05,
+                opacitySpeed: 6,
+                fov: 900,
+                speed: 0.6,
+                fontFamily: 'Oswald, Arial, sans-serif',
+                fontSize: '24',
+                fontColor: '#aabbcc',
+                fontWeight: 'normal',//bold
+                fontStyle: 'normal',//italic 
+                fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
+                fontToUpperCase: true
+
+            };
+				$( '#tag-cloud' ).svg3DTagCloud( settings );
+			
+
+			
+		}
+		
+		
+	//生成随机的名字
+	function getRandomName(){
+		var randomNum = Math.ceil(Math.random()*totalNum)-1;
+		
+		var randomName = json802[randomNum].name;
+		$("#randomnames").val(randomName);
+	}
+	
+	
+	//开始显示随机名称呼
+	function startRollCall(){
+		if(typeof(rollCallTask) != 'undefined'){
+				return;
+			}	
+		rollCallTask =	setInterval(function(){
+				var randomNum = Math.ceil(Math.random()*totalNum)-1;
+				if(typeof(ids) != 'undefined'){
+					$('#'+ids).attr("fill",'#aabbcc');
+					$('#'+ids).attr("font-size","24");
+				}
+				
+				ids = randomNum + 'myids';			
+				$('#'+ids).attr("fill","red");
+				$('#'+ids).attr("font-size","48");
+				
+				//$('#'+ids).html("")
+				//getRandomName();
+			},150)
+	}
+	
+
+	
+	
+	//停止点名
+	function stopRollCall(){
+			if(typeof(rollCallTask) == 'undefined'){
+				return;
+			}
+			clearInterval(rollCallTask);
+			delete rollCallTask;
+		}
+		
+	function clean(){
+		if(typeof(rollCallTask) != 'undefined'){
+				return;
+		}	
+		if(typeof(ids) != 'undefined'){
+			$('#'+ids).attr("fill",'#aabbcc');
+			$('#'+ids).attr("font-size","24");
+		}
+	}
+	
+
+function getRandomColor(){
+		var c1 = Math.ceil(Math.random()*16).toString(16);
+		var c2 = Math.ceil(Math.random()*16).toString(16);
+		var c3 = Math.ceil(Math.random()*16).toString(16);
+		var c4 = Math.ceil(Math.random()*16).toString(16);
+		var c5 = Math.ceil(Math.random()*16).toString(16);
+		var c6 = Math.ceil(Math.random()*16).toString(16);
+	
+		var cololr = "#"+c1+c2+c3+c4+c5+c6;
+		return cololr;
+
+}
+
+	
+	
+</script>
+
+
+<style>
+	.gb-grey{
+		
+		border-collapse: collapse;
+		border-spacing: 0;
+		
+	}
+	
+</style>
+
+</head>
+<body>
+
+    
+<div class="wrap" style="height:70%;">
+  <div class="logo" style="background-color:#1a1a1a;border-radius:5px;margin-right:40px;margin-left:20px;line-height:102px;"><img src="icon/dianming.png" style="padding-left:20px;padding-top:10px;padding-bottom:15px;padding-right:40px;"/><font style="font-size:48px;">802班点名</font></div>
+  <div class="main">
+    <div class="main-head">
+      <div class="tab-bar">
+        <a class="active" onclick = "init802();">802班</a>
+        <span class="bottom-line"></span>
+      </div>
+    </div>
+    <div class="btn-bar">
+      <a onclick = "startRollCall();"><img src="./icon/begin.png" />开始点名</a>
+      <a onclick = "stopRollCall();"><img src="./icon/end.png" />结束点名</a>
+	  <a onclick = "clean();"><img src="./icon/clean.png" />清除</a>
+    </div>
+	<div id='tag-cloud' style ="overflow:hidden;border-radius:5px;"></div>
+   
+  </div>
+</div>
+</body>
+
+
+
+
+</html>
